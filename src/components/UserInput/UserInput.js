@@ -1,14 +1,13 @@
 import React from 'react';
 
-function UserInput() {
+function UserInput({answersList, setAnswersList}) {
   const [answer, setAnswer] = React.useState('')
-  const [answersList, setAnswersList] = React.useState([])
-
+  
   return (
     <form className="guess-input-wrapper" onSubmit={(event) => {
       event.preventDefault();
       if (answer.length !== 5){
-        alert(`"Your guess has to be 6 letters!" ${answer.length}`)
+        alert(`Your guess has to be 5 letters! ${answer.length}`)
       } else {
         setAnswersList(prev => [...prev, answer])
 
@@ -29,10 +28,7 @@ function UserInput() {
        }}
        ></input>
 
-       <h1>Answer's List</h1>
-       <ul>
-          {answersList.map(ans => <li key={Math.random()}>{ans}</li>)}
-       </ul>
+       
     </form>
   )
 }
